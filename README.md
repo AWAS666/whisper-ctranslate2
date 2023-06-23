@@ -19,7 +19,7 @@ To install the latest stable version, just type:
 
 Alternatively, if you are interested the latest development (non-stable) version from this repository, just tpe:
 
-    pip install git+https://github.com/jordimas/whisper-ctranslate2.git
+    pip install git+https://github.com/AWAS666/whisper-ctranslate2.git
 
 # CPU and GPU support
 
