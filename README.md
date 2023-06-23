@@ -11,6 +11,9 @@ Goals of the project:
 * Provide an easy way to use the CTranslate2 Whisper implementation
 * Ease the migration for people using OpenAI Whisper CLI
 
+## Fork
+This also includes an alternative option for sending all live text via websocket on with *ws_live_transcribe*
+
 # Installation
 
 To install the latest stable version, just type:

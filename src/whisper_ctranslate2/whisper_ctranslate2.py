@@ -8,6 +8,7 @@ from typing import Union, List
 from .writers import get_writer
 from .version import __version__
 from .live import Live
+from .websocketlive import WSLive
 import sys
 
 MODEL_NAMES = [
@@ -386,7 +387,8 @@ def main():
     cache_directory: str = args.pop("model_dir")
     device_index: Union[int, List[int]] = args.pop("device_index")
     suppress_tokens: str = args.pop("suppress_tokens")
-    live_transcribe: bool = args.pop("live_transcribe")
+    live_transcribe: bool = args.pop("live_transcribe") or args.pop("ws_live_transcribe")
+    wslive_transcribe: bool = args.pop("ws_live_transcribe")
     audio: str = args.pop("audio")
     local_files_only: bool = args.pop("local_files_only")
     live_volume_threshold: float = args.pop("live_volume_threshold")
@@ -494,6 +496,25 @@ def main():
     else:
         model_dir = model
 
+    if wslive_transcribe:
+        WSLive(
+            model_dir,
+            cache_directory,
+            local_files_only,
+            task,
+            language,
+            threads,
+            device,
+            device_index,
+            compute_type,
+            verbose,
+            live_volume_threshold,
+            live_input_device,
+            options,
+        ).inference()
+
+        return
+    
     if live_transcribe:
         Live(
             model_dir,

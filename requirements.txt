@@ -4,3 +4,4 @@ ctranslate2
 tqdm
 sounddevice
 numpy
+websocket-client
