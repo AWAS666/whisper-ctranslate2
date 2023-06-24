@@ -391,8 +391,9 @@ def main():
     cache_directory: str = args.pop("model_dir")
     device_index: Union[int, List[int]] = args.pop("device_index")
     suppress_tokens: str = args.pop("suppress_tokens")
-    live_transcribe: bool = args.pop("live_transcribe") or args.pop("ws_live_transcribe")
-    wslive_transcribe: bool = args.pop("ws_live_transcribe")
+    ws = args.pop("ws_live_transcribe")
+    live_transcribe: bool = args.pop("live_transcribe") or ws
+    wslive_transcribe: bool = ws
     audio: str = args.pop("audio")
     local_files_only: bool = args.pop("local_files_only")
     live_volume_threshold: float = args.pop("live_volume_threshold")
