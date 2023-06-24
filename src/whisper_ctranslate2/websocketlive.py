@@ -60,12 +60,13 @@ class WSLive:
         self.blocks_speaking = 0
         self.buffers_to_process = []
         self.transcribe = None
+        websocket.enableTrace(False)
         self.ws = websocket.WebSocketApp(
             "ws://localhost:4700/STT",
-           """  on_open=on_open,
-            on_message=on_message,
-            on_error=on_error,
-            on_close=on_close, """
+            on_open=self.on_open,
+            on_message=self.on_message,
+            on_error=self.on_error,
+            on_close=self.on_close,
         )
         self.wst = threading.Thread(target=self.ws.run_forever)
         self.wst.daemon = True
@@ -76,6 +77,19 @@ class WSLive:
             self.ws.send(message)
         except e: 
             print(e)
+
+    
+    def on_message(ws, message):
+        print(message)
+
+    def on_error(ws, error):
+        print(error)
+
+    def on_close(ws, close_status_code, close_msg):
+        print("### closed ###")
+
+    def on_open(ws):
+        print("Opened connection")
 
     @staticmethod
     def is_available():
