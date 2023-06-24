@@ -347,6 +347,10 @@ def read_command_line():
     )
 
     live_args.add_argument(
+        "--ws_live_transcribe", type=str2bool, default=False, help="live transcribe mode and send to ws"
+    )
+
+    live_args.add_argument(
         "--live_volume_threshold",
         type=float,
         default=0.2,
