@@ -75,9 +75,8 @@ class WSLive:
     def safeWSsend(self, message):
         try:
             self.ws.send(message)
-        except e: 
-            print(e)
-
+        except:
+            pass 
     
     def on_message(self, ws, message):
         print(message)
