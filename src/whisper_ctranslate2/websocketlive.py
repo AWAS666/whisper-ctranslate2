@@ -79,16 +79,16 @@ class WSLive:
             print(e)
 
     
-    def on_message(ws, message):
+    def on_message(self, ws, message):
         print(message)
 
-    def on_error(ws, error):
+    def on_error(self, ws, error):
         print(error)
 
-    def on_close(ws, close_status_code, close_msg):
+    def on_close(self, ws, close_status_code, close_msg):
         print("### closed ###")
 
-    def on_open(ws):
+    def on_open(self, ws):
         print("Opened connection")
 
     @staticmethod
